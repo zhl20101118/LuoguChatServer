@@ -7,8 +7,8 @@ account_id = "f408a22ce71832c99dab8f500445db1c"
 
 [[kv_namespaces]]
 binding = "chat_kv"
-id = "YOUR_KV_NAMESPACE_ID"
-preview_id = "YOUR_KV_NAMESPACE_PREVIEW_ID"
+id = "f3aa6d93c686425ab409eacac1a54448"
+preview_id = "f3aa6d93c686425ab409eacac1a54448"
 
 [vars]
 ENVIRONMENT = "production"
