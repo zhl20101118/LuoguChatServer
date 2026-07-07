@@ -677,6 +677,7 @@ function adminHTML() {
 
   <!-- Dashboard View -->
   <div id="dashboardView" class="hidden">
+    <button class="btn btn-sm btn-secondary" onclick="logout()" style="position:fixed;top:16px;right:16px;z-index:50">退出登录</button>
     <div class="container">
       <div class="header">
         <div class="logo-mark">⚡</div>
@@ -782,6 +783,20 @@ function adminHTML() {
 
 <script>
 let adminToken = '';
+// 页面刷新 / 重新打开后自动恢复已保存的登录态（存于浏览器 localStorage）
+(function restoreAdmin(){
+  try {
+    const saved = localStorage.getItem('lc_admin_token');
+    if (saved) {
+      adminToken = saved;
+      const lv = document.getElementById('loginView');
+      const dv = document.getElementById('dashboardView');
+      if (lv) lv.classList.add('hidden');
+      if (dv) dv.classList.remove('hidden');
+      initDashboard();
+    }
+  } catch(e){}
+})();
 let currentModalUid = '';
 let userCache = {};
 
@@ -803,6 +818,7 @@ async function login() {
   const res = await api('/admin/login', { password: pwd });
   if (res.success) {
     adminToken = res.token;
+    try { localStorage.setItem('lc_admin_token', adminToken); } catch(e){}
     document.getElementById('loginView').classList.add('hidden');
     document.getElementById('dashboardView').classList.remove('hidden');
     initDashboard();
@@ -816,6 +832,13 @@ async function login() {
 document.getElementById('adminPwd').addEventListener?.('keydown', e => {
   if (e.key === 'Enter') login();
 });
+
+/* ------ 退出登录（清除本地保存的 token） ------ */
+function logout() {
+  try { localStorage.removeItem('lc_admin_token'); } catch(e){}
+  adminToken = '';
+  location.reload();
+}
 
 /* ------ Tabs ------ */
 document.querySelectorAll('.tab').forEach(t => {
