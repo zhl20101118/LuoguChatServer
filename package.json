@@ -1,0 +1,25 @@
+{
+  "name": "luogu-chat-server",
+  "version": "3.0.0",
+  "description": "LuoguChat Cloudflare Worker Server - AI quota management and user monitoring",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "login": "wrangler login"
+  },
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "kv",
+    "luogu",
+    "chat",
+    "ai"
+  ],
+  "author": "LuoguChat",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
