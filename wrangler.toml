@@ -1,9 +1,9 @@
-name = "luogu-chat-server"
+name = "luoguchatserver"
 main = "worker.js"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
 
-account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+account_id = "f408a22ce71832c99dab8f500445db1c"
 
 [[kv_namespaces]]
 binding = "chat_kv"
